@@ -1,0 +1,2 @@
+recursive-include show_src_code *
+recursive-exclude show_src_code *.pyc
