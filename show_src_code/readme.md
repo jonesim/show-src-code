@@ -11,7 +11,7 @@ Add to installed apps
 Add to template
 
     {% load static src_code %}
-    {% highlighjs_includes %}
+    {% highlightjs_includes %}
     <script src="{% static 'ajax_helpers/ajax_helpers.js' %}"></script>
     <link href="{% static 'ajax_helpers/ajax_helpers.css' %}" rel="stylesheet"/>    
     <script src="{% static 'django_modals/js/modals.js' %}"></script>
