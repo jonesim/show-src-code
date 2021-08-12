@@ -15,7 +15,7 @@ def show_src_code(context, modal, *args, button='Source Code', button_classes='b
 
 
 @register.simple_tag
-def highlighjs_includes():
+def highlightjs_includes():
     return mark_safe(
         f'<link rel="stylesheet" href={static("show_src_code/highlightjs.css")}>'
         f'<script src="{static("show_src_code/highlightjs.js")}"></script>'
@@ -23,7 +23,7 @@ def highlighjs_includes():
 
 
 @register.simple_tag
-def highlighjs_includes_cdn():
+def highlightjs_includes_cdn():
     return mark_safe(
         f'<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.0.1/styles/default.min.css">'
         f'<script src="https://unpkg.com/@highlightjs/cdn-assets@11.0.1/highlight.min.js"></script>'
