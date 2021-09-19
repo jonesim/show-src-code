@@ -1,5 +1,5 @@
 from django import template
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 from django.utils.safestring import mark_safe
 from django_modals.helper import show_modal as show_modal_helper, make_slug
 
