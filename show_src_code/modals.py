@@ -11,15 +11,14 @@ class BaseSourceCodeModal(Modal):
     code = {'template_src': 'crud'}
 
     def modal_content(self):
-        if self.slug['pk'] not in self.code:
-            return template_source(self.slug['template'].replace(':', '/'), self.slug['pk'])
-        else:
+        if 'pk' in self.slug:
             code = self.code.get(self.slug['pk'])
             if callable(code):
                 return html_code(code)
             else:
                 a = import_string(self.kwargs['pk'])
                 return html_code(a)
+        return template_source(self.slug['template'].replace(':', '/'), self.slug['pk'])
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
