@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="django-show-source-code",
-    version="0.0.3",
+    version="0.0.4",
     author="Ian Jones",
     description="Django app to show source code and templates in a bootstrap modal",
     url="https://github.com/jonesim/show-src-code",
