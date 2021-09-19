@@ -1,6 +1,6 @@
 import django_modals.modals as modals
 from django.utils.safestring import mark_safe
-
+from django.utils.module_loading import import_string
 from django_modals.modals import Modal
 from .source_code import template_source, html_code
 
@@ -14,9 +14,12 @@ class BaseSourceCodeModal(Modal):
         if self.slug['pk'] not in self.code:
             return template_source(self.slug['template'].replace(':', '/'), self.slug['pk'])
         else:
-            code = self.code[self.slug['pk']]
+            code = self.code.get(self.slug['pk'])
             if callable(code):
                 return html_code(code)
+            else:
+                a = import_string(self.kwargs['pk'])
+                return html_code(a)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
