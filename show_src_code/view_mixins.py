@@ -1,3 +1,4 @@
+import inspect
 from django.apps import apps
 from django_menus.menu import MenuMixin, MenuItem
 
@@ -20,6 +21,7 @@ class DemoViewMixin:
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         self.menus['main_menu'].menu_items.insert(0, self.package_button())
+        context['view_class'] = inspect.getmodule(self).__name__ + '.' + self.__class__.__name__
         context['version'] = self.app.pypi_data['info']['version']
         context['version_img'] = 'https://badge.fury.io/py/{}.svg'.format(self.app.pypi)
         context['home_page'] = self.app.pypi_data['info']['home_page']
