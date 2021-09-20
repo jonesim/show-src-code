@@ -12,13 +12,19 @@ class BaseSourceCodeModal(Modal):
 
     def modal_content(self):
         if 'pk' in self.slug:
-            code = self.code.get(self.slug['pk'])
-            if callable(code):
-                return html_code(code)
+            # Try to get callable from dictionary
+            function_class = self.code.get(self.slug['pk'])
+            if callable(function_class):
+                code = html_code(function_class)
             else:
                 a = import_string(self.kwargs['pk'])
-                return html_code(a)
-        return template_source(self.slug['template'].replace(':', '/'), self.slug['pk'])
+                code = html_code(a)
+        if 'template' in self.slug:
+            if 'templateSection' in self.slug:
+                code += template_source(self.slug['template'].replace(':', '/'), self.slug['templateSection'])
+            else:
+                code += template_source(self.slug['template'].replace(':', '/'))
+        return code
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
