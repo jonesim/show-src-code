@@ -11,6 +11,7 @@ class BaseSourceCodeModal(Modal):
     code = {'template_src': 'crud'}
 
     def modal_content(self):
+        code = ''
         if 'pk' in self.slug:
             # Try to get callable from dictionary
             function_class = self.code.get(self.slug['pk'])
