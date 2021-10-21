@@ -46,7 +46,7 @@ class CodeMixin:
     def button_code(self, **_kwargs):
         code = ''
         try:
-            if hasattr(self, 'form_class'):
+            if hasattr(self, 'form_class') and self.form_class is not None:
                 code = html_code(self.form_class)
         except OSError:
             pass
